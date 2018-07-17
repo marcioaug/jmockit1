@@ -13,7 +13,7 @@ import mockit.coverage.*;
 public class LineSegmentData implements Serializable
 {
    private static final long serialVersionUID = -6233980722802474992L;
-   private static final int MAX_CALL_POINTS = Integer.parseInt(Configuration.getProperty("maxCallPoints", "10"));
+   private static final int MAX_CALL_POINTS = Integer.parseInt(Configuration.getProperty("maxCallPoints", "100000"));
 
    // Constant data:
    private boolean unreachable;

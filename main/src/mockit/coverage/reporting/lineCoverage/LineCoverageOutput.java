@@ -5,8 +5,10 @@
 package mockit.coverage.reporting.lineCoverage;
 
 import java.io.*;
+import java.util.List;
 import javax.annotation.*;
 
+import mockit.coverage.CallPoint;
 import mockit.coverage.lines.*;
 import mockit.coverage.reporting.parsing.*;
 
@@ -31,13 +33,28 @@ public final class LineCoverageOutput
 
       int lineExecutionCount = lineCoverageData.getExecutionCount(line);
 
+      LineCoverageData lineData = lineCoverageData.getLineData(line);
+      List<CallPoint> callPoints = lineData.getCallPoints();
+
+      int callPointCount = 0;
+
+      if (callPoints != null)
+         callPointCount = lineData.getCallPoints().size();
+
       if (lineExecutionCount < 0) {
          return false;
       }
 
       writeLineExecutionCount(lineExecutionCount);
+      writeLineCallPointsCount(callPointCount);
       writeExecutableCode(lineParser);
       return true;
+   }
+
+   private void writeLineCallPointsCount(int callPointsCount) {
+      output.write("<td style='display: none' class='callpoints-count'>");
+      output.print(callPointsCount);
+      output.println("</td>");
    }
 
    private void writeLineExecutionCount(int lineExecutionCount) {
