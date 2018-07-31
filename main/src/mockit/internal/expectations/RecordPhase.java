@@ -4,6 +4,7 @@
  */
 package mockit.internal.expectations;
 
+import java.util.*;
 import javax.annotation.*;
 
 import mockit.internal.expectations.invocation.*;
@@ -38,8 +39,8 @@ public final class RecordPhase extends TestOnlyPhase
       boolean nonStrictInvocation = false;
 
       if (!matchInstance && invocation.isConstructor()) {
-         invocation.replacementInstance = mock;
-         getReplacementMap().put(mock, mock);
+         Map<Object, Object> replacementMap = getReplacementMap();
+         replacementMap.put(mock, mock);
       }
       else {
          nonStrictInvocation = isInstanceMethodWithStandardBehavior(mock, mockNameAndDesc);
@@ -65,7 +66,8 @@ public final class RecordPhase extends TestOnlyPhase
          return null;
       }
 
-      Object replacementInstance = getReplacementMap().get(mock);
+      Map<Object, Object> replacementMap = getReplacementMap();
+      Object replacementInstance = replacementMap.get(mock);
       matchInstance = mock == replacementInstance || isEnumElement(mock);
       return mock;
    }

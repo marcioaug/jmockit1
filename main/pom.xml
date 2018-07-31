@@ -4,7 +4,7 @@
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
 
-   <groupId>org.jmockit</groupId><artifactId>jmockit</artifactId><version>1.40-marcio.1</version>
+   <groupId>org.jmockit</groupId><artifactId>jmockit</artifactId><version>1.41-marcio.1</version>
    <packaging>jar</packaging>
 
    <name>JMockit</name>
@@ -65,12 +65,6 @@
             </includes>
          </resource>
       </resources>
-      <testResources>
-         <testResource>
-            <directory>test</directory>
-            <includes><include>**/*.zip</include></includes>
-         </testResource>
-      </testResources>
       <plugins>
          <plugin>
             <artifactId>maven-compiler-plugin</artifactId><version>3.7.0</version>

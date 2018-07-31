@@ -66,16 +66,13 @@ public final class ExpectedInvocation
       return UNDEFINED_DEFAULT_RETURN;
    }
 
-   // Simple getters //////////////////////////////////////////////////////////////////////////////////////////////////
+   // Simple getters //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    @Nonnull public String getClassDesc() { return arguments.classDesc; }
    @Nonnull public String getClassName() { return arguments.getClassName(); }
    @Nonnull public String getMethodNameAndDescription() { return arguments.methodNameAndDesc; }
    @Nonnull public Object[] getArgumentValues() { return arguments.getValues(); }
    public boolean isConstructor() { return arguments.isForConstructor(); }
-
-   @Nullable
-   public Object getRecordedInstance() { return replacementInstance != null ? replacementInstance : instance; }
 
    @Nonnull
    public String getSignatureWithResolvedReturnType() {
@@ -98,7 +95,7 @@ public final class ExpectedInvocation
       return arguments.methodNameAndDesc;
    }
 
-   // Matching based on instance or mocked type ///////////////////////////////////////////////////////////////////////
+   // Matching based on instance or mocked type ///////////////////////////////////////////////////////////////////////////////////////////
 
    public boolean isMatch(@Nullable Object mock, @Nonnull String invokedClassDesc, @Nonnull String invokedMethod) {
       return
@@ -214,7 +211,7 @@ public final class ExpectedInvocation
          mockedInstance != null && instance != null && replacementMap != null && replacementMap.get(mockedInstance) == instance;
    }
 
-   // Creation of Error instances for invocation mismatch reporting ///////////////////////////////////////////////////
+   // Creation of Error instances for invocation mismatch reporting ///////////////////////////////////////////////////////////////////////
 
    public ExpectedInvocation(
       @Nullable Object mockedInstance, @Nonnull String classDesc, @Nonnull String methodNameAndDesc, @Nonnull Object[] args
@@ -346,7 +343,7 @@ public final class ExpectedInvocation
       return arguments.assertMatch(replayArgs, instanceMap);
    }
 
-   // Default result //////////////////////////////////////////////////////////////////////////////////////////////////
+   // Default result //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    @Nullable
    public Object getDefaultValueForReturnType() {
